@@ -1,0 +1,30 @@
+﻿@model Blog
+
+
+<div class="mt-5">
+    <a asp-action="index" class="btn btn-success">Panele Dön</a>
+</div>
+<div class="mt-3">
+    <h1>Ürünü Sil</h1>
+</div>
+<form asp-controller="Writer" asp-action="Delete" method="post" class="my-5">
+    <input type="hidden" asp-for="BlogId" />
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6" style="text-align:center;">
+                <div class="form-group">
+                    <label asp-for="BlogName" class="form-label">@Model.BlogName Silinsin mi?</label>
+                    <br />
+                    <input type="hidden" value="@Model.BlogId" name="id" />
+                    <button type="submit" class="btn btn-danger">Evet</button>
+                    <a asp-controller="Admin" asp-action="Index" class="btn btn-success">Hayır</a>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</form>

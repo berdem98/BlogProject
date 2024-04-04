@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Category>
+
+
+
+<div class="mb-3">
+    <div class="section-title mb-0">
+        <h4 class="m-0 text-uppercase font-weight-bold">Kategoriler</h4>
+    </div>
+    <div class="bg-white border border-top-0 p-3">
+        @foreach (var item in Model)
+        {
+
+            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                <img class="img-fluid" src="@item.CategoryImage" alt="">
+                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+
+                    <a asp-controller="Blog" asp-action="CategoryBlogList" asp-route-id="@item.CategoryId" class="h6 m-0 text-secondary text-uppercase font-weight-bold">@item.CategoryName</a>
+                    <div class="mb-2">
+
+                        <a asp-controller="Blog" asp-action="CategoryBlogList" asp-route-id="@item.CategoryId" class="text-body"><small>@item.CategoryDescription!.Substring(0, item.CategoryDescription.Substring(0, 70).LastIndexOf(" "))...</small></a>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+<div>

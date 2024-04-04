@@ -1,0 +1,54 @@
+﻿@using System.Security.Claims
+@model Blog
+
+<div class="row">
+    <div class="col-12">
+        <div class="bg-white p-4">
+            <h1>Post Oluştur</h1>
+            <form action="BlogAdd" method="post">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <input type="hidden" asp-for="BlogId" />
+                <input type="hidden" asp-for="WriterId" />
+                <div class="mb-3">
+                    <label asp-for="BlogName" class="form-label"></label>
+                    <input asp-for="BlogName" class="form-control" />
+                    <span asp-validation-for="BlogName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BlogImage" class="form-label"></label>
+                    <input asp-for="BlogImage" class="form-control" />
+                    <span asp-validation-for="BlogImage" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    @Html.Label("Kategori")
+                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BlogContent" class="form-label"></label>
+                    <input asp-for="BlogContent" class="form-control" />
+                    <span asp-validation-for="BlogContent" class="text-danger"></span>
+                </div>
+                @if (User.FindFirstValue(ClaimTypes.Role) == "admin")
+                {
+                    <div class="form-check">
+                        <input asp-for="BlogStatus" class="form-check-input" />
+                        <label asp-for="BlogStatus" class="form-check-label">Aktif</label>
+                    </div>
+                }
+
+                <button type="submit" class="btn btn-primary">Paylaş</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts2 {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js" integrity="sha512-VCEWnpOl7PIhbYMcb64pqGZYez41C2uws/M/mDdGPy+vtEJHd9BqbShE4/VNnnZdr7YCPOjd+CBmYca/7WWWCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#BlogContent'
+        })
+    </script>
+}

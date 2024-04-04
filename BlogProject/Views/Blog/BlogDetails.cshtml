@@ -1,0 +1,121 @@
+﻿@model Blog
+
+
+
+
+    
+    <!-- Breaking News End -->
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- News Detail Start -->
+                     
+                
+                    <div class="position-relative mb-3">
+                        <img class="img-fluid w-100" src="@Model.BlogImage" style="object-fit: cover;">
+                        <div class="bg-white border border-top-0 p-4">
+                            <div class="mb-3">
+                            @if (!Model.BlogStatus)
+                            {
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Blog Onay Bekliyor</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Blog" asp-action="CategoryBlogList" asp-route-id="@Model.Category.CategoryId" class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   >@Model.Category.CategoryName</a>
+                            }
+
+                                <a class="text-body" href="">@Model.BlogCreateDate</a>
+                            </div>
+                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">@Model.BlogName</h1>
+                            <p>
+                                @Model.BlogContent
+                            </p>
+                            
+                            
+                            
+                        </div>
+                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle mr-2" src="@Model.Writer.WriterImage" width="25" height="25" alt="">
+                                <span>@Model.Writer.WriterUserName</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="ml-3"><i class="far fa-eye mr-2"></i>12345</span>
+                                <span class="ml-3"><i class="far fa-comment mr-2"></i>123</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                    <!-- News Detail End -->
+                    <!-- Comment List Start -->
+                
+                    <!-- Comment List End -->
+                    <!-- Comment Form Start -->
+                
+                    <!-- Comment Form End -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Follow Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Fans</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                                <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Connects</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                                <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                                <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Subscribers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
+                                <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Social Follow End -->       
+                    <!-- Popular News Start -->
+                 @await Component.InvokeAsync("GetCategoryList") 
+                <!-- Popular News End -->
+
+                   
+                </div>
+                
+            </div>
+        </div>
+    @await Component.InvokeAsync("CommentListByBlog", new { id = Model.BlogId })
+    @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml", Model)
+    </div>
+    <!-- News With Sidebar End -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/BlogProjectTema/js/main.js"></script>
+

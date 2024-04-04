@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Blog>
+<div class="mb-3">
+    <div class="section-title mb-0">
+        <h4 class="m-0 text-uppercase font-weight-bold">En Son Bloglar</h4>
+    </div>
+    @foreach (var item in Model)
+{
+        <div class="bg-white border border-top-0 p-3">
+            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                <img class="img-fluid" src="@item.BlogImage" alt="">
+                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">@item.Category.CategoryName</a>
+                        <small>@item.BlogCreateDate.ToShortDateString()</small>
+                    </div>
+                    <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@item.BlogId" class="h6 m-0 text-secondary text-uppercase font-weight-bold">@item.BlogName</a>
+                    <div class="d-flex align-items-center">
+                        <a asp-controller="Blog" asp-action="WriterBlogList">
+                            <img class="rounded-circle mr-2" src="@item.Writer.WriterImage" width="25" height="25" alt="">
+                            <small>@item.Writer.WriterName</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    
+}
+</div>
