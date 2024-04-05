@@ -3925,6 +3925,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
 }
 
 .nav-link {
@@ -4034,11 +4035,12 @@ input[type="button"].btn-block {
 }
 
 .navbar-nav {
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    text-align: center;
 }
 
 .navbar-nav .nav-link {

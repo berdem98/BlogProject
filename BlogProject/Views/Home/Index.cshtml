@@ -3,42 +3,42 @@
 
 
 
+<div class="container-fluid">
+    <div class="container"> 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row mx-0">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-6 px-0">
+                            <div class="position-relative overflow-hidden" style="height: 250px;">
+
+                                <img class="img-fluid w-100 h-100" src="@item.CategoryImage" style="object-fit: cover;">
+                                <div class="overlay">
+
+                                    <a asp-controller="Blog" asp-action="CategoryBlogList" asp-route-id="@item.CategoryId" class="h6 m-0 text-white text-uppercase font-weight-semi-bold" >@item.CategoryName</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
 <!-- News With Sidebar Start -->
 <div class="container-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <!-- News Detail Start -->
-                @foreach (var item in Model)
-                {
-                    
-                    <div class="position-relative mb-3">
-                        <a asp-controller="Blog" asp-action="CategoryBlogList" asp-route-id="@item.CategoryId"> <img class="img-fluid w-100" src="@item.CategoryImage" style="object-fit: cover;"> </a>
-                        <div class="bg-white border border-top-0 p-4">
-                            
-                            <a asp-controller="Blog" asp-action="CategoryBlogList" asp-route-id="@item.CategoryId">
-                                <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">@item.CategoryName</h1>
-                            </a>
-                           
-                            <p>
-                                @item.CategoryDescription
-                            </p>
-
-
-
-                        </div>
-                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                            
-                            <div class="d-flex align-items-center">
-                                <span class="ml-3"><i class="far fa-eye mr-2"></i>12345</span>
-                                <span class="ml-3"><i class="far fa-comment mr-2"></i>123</span>
-                            </div>
-                        </div>
-                    </div>
-                }
-                <!-- News Detail End -->
-            </div>
-            <div class="col-lg-6">
+            
+            <div class="col-lg-12">
                 <!-- Social Follow Start -->
                 <div class="mb-3">
                     

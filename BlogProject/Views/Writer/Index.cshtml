@@ -2,43 +2,60 @@
 
 
 <div class="container">
-    <div class="mt-3">
-        <a asp-action="BlogAdd" class="btn btn-success">Yeni Blog Ekle</a>
+    <div class="row">
+        <div class="col-lg-4 mt-3">
+            
+            @if (Model.Any()) // Model içinde öğe var mı diye kontrol ediyoruz
+            {
+                var item = Model.First(); // Model içindeki ilk öğeyi alıyoruz
+                <div class="d-flex align-items-center">
+                    <img class="rounded-circle mr-2" src="@item.Writer.WriterImage" width="45" height="45" alt="">
+                    <span>@item.Writer.WriterUserName</span>
+                </div>
+            }
+            
+        </div>
+        <div class="col-lg-8">
+            <div class="mt-3">
+                <a asp-action="BlogAdd" class="btn btn-success">Yeni Blog Ekle</a>
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <h1>Bloglarım</h1>
+                <thead>
+
+                    <tr>
+                        <th></th>
+                        <th>Blog Adı</th>
+                        <th>Kategori</th>
+                        <th>Düzenlenme Tarihi</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><img style="width:50px;" src="@item.BlogImage" /></td>
+                            <td>@item.BlogName</td>
+                            <td>@item.Category.CategoryName</td>
+                            <td>@item.BlogCreateDate</td>
+                            <td>
+                                <a asp-controller="Writer" asp-action="Edit" asp-route-id="@item.BlogId" class="btn btn-primary">Güncelle</a>
+                                <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@item.BlogId" class="btn btn-info">Detay</a>
+                                <a asp-controller="Writer" asp-action="Delete" asp-route-id="@item.BlogId" class="btn btn-danger">Sil</a>
+
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
     </div>
     
-    <table class="table table-bordered table-striped">
-        
-            <thead>
-
-                <tr>
-                    <th></th>
-                    <th>Blog Adı</th>
-                    <th>Kategori</th>
-                    <th>Düzenlenme Tarihi</th>
-                    <th>İşlemler</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td><img style="width:50px;" src="@item.BlogImage"/></td>
-                    <td>@item.BlogName</td>
-                    <td>@item.Category.CategoryName</td>
-                    <td>@item.BlogCreateDate</td>
-                    <td>
-                        <a asp-controller="Writer" asp-action="Edit" asp-route-id="@item.BlogId" class="btn btn-primary">Güncelle</a>
-                        <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@item.BlogId" class="btn btn-info">Detay</a>
-                        <a asp-controller="Writer" asp-action="Delete" asp-route-id="@item.BlogId" class="btn btn-danger">Sil</a>
-
-
-                       
-                    </td>
-                </tr>
-            }
-            </tbody>
-        
-        
-    </table>
 </div>
 

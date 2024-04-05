@@ -9,10 +9,14 @@
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-12">
-                        <div class="section-title">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
-                            <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
-                        </div>
+                        
+                        @if (Model.Any())
+                        {
+                            var item = Model.First(); 
+                            <div class="section-title">
+                                <h4 class="m-0 text-uppercase font-weight-bold">@item.Category.CategoryName</h4>
+                            </div>
+                        }
                     </div>
                     @foreach (var item in Model)
                     {
@@ -33,7 +37,7 @@
                                 <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                                     <div class="d-flex align-items-center">
                                         <img class="rounded-circle mr-2" src="@item.Writer.WriterImage" width="25" height="25" alt="">
-                                        <small>@item.Writer.WriterUserName</small>
+                                        <a asp-controller="Blog" asp-action="WriterBlogList" asp-route-id="@item.Writer.WriterId"><small>@item.Writer.WriterName</small></a>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>

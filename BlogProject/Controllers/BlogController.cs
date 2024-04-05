@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -36,6 +37,11 @@ namespace BlogProject.Controllers
             {
                 return NotFound();
             }
+        }
+        public IActionResult WriterBlogList(int id)
+        {
+            var values = blogManager.GetListWithCategoryByWriterBm(id);
+            return View(values);
         }
     }
 }

@@ -37,89 +37,22 @@
 
 <body>
     <!-- Topbar Start -->
-    <div class="container-fluid d-none d-lg-block">
+    @* <div class="container-fluid d-none d-lg-block">
         <div class="row align-items-center bg-dark px-lg-5">
-            <div class="col-lg-9">
-                <nav class="navbar navbar-expand-sm bg-dark p-0">
-                    <ul class="navbar-nav ml-n2">
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">@DateTime.UtcNow.ToShortDateString()</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">İletişim</a>
-                        </li>
-                        @if (User.FindFirstValue(ClaimTypes.Role)=="admin")
-                        {
-                            <li class="nav-item">
-                                <a asp-controller="Admin" asp-action="Index" class="nav-link text-body small">Profil </a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="Login" asp-action="Logout" class="nav-link text-body small">Çıkış </a>
-                            </li>
-                        }
-                        else
-                        {
-                            @if (User.Identity!.IsAuthenticated)
-                            {
-                                <li class="nav-item">
-                                    <a asp-controller="Writer" asp-action="Index" class="nav-link text-body small">Profil </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-controller="Login" asp-action="Logout" class="nav-link text-body small">Çıkış </a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item">
-                                    <a asp-controller="Login" asp-action="Index" class="nav-link text-body small">Giriş Yap</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-controller="Register" asp-action="Index" class="nav-link text-body small">Kayıt Ol</a>
-                                </li>
-                            }
-                        }
-                        
-                    </ul>
-                </nav>
-            </div>
             <div class="col-lg-3 text-right d-none d-md-block">
-                <nav class="navbar navbar-expand-sm bg-dark p-0">
-                    <ul class="navbar-nav ml-auto mr-n2">
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
-                        </li>
-                    </ul>
-                </nav>
+                
             </div>
         </div>
         <div class="row align-items-center bg-white py-3 px-lg-5">
             <div class="col-lg-4">
-                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand p-0 d-none d-lg-block">
                     <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-secondary font-weight-normal">News</span></h1>
                 </a>
             </div>
 
         </div>
     </div>
-    </div>
+    </div> *@
     <!-- Topbar End -->
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
@@ -131,19 +64,43 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Ana Sayfa</a>
+                <div class="navbar-nav mr-auto py-0"> 
+                            <a asp-controller="Home" asp-action="Index" class="navbar-brand p-0 d-none d-lg-block">
+                                <h1 style="height:50px;" class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-light font-weight-normal">News</span></h1>
+                            </a>                  
+                    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link ">Ana Sayfa</a>
+                    <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">İletişim</a>
                     <a asp-controller="Category" asp-action="Index" class="nav-item nav-link">Kategoriler</a>
                     <a asp-controller="Blog" asp-action="Index" class="nav-item nav-link">Bloglar</a>
-                    <div class="nav-item dropdown">
+                    @if (User.FindFirstValue(ClaimTypes.Role) == "admin")
+                    {
+                        <a asp-controller="Admin" asp-action="Index" class="nav-item nav-link">Profil </a>
+                        <a asp-controller="Login" asp-action="Logout" class="nav-item nav-link">Çıkış </a>
+                    }
+                    else
+                    {
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                                <a asp-controller="Writer" asp-action="Index"  class="nav-item nav-link">Profil </a>
+                                <a asp-controller="Login" asp-action="Logout"  class="nav-item nav-link">Çıkış </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Login" asp-action="Index" class="nav-item nav-link">Giriş Yap</a>
+                            <a asp-controller="Register" asp-action="Index" class="nav-item nav-link">Kayıt Ol</a>
+                        }
+                    }
+                    
+
+                    @* <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="#" class="dropdown-item">Menu item 1</a>
                             <a href="#" class="dropdown-item">Menu item 2</a>
                             <a href="#" class="dropdown-item">Menu item 3</a>
                         </div>
-                    </div>
-                    <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">İletişim</a>
+                    </div> *@
+                    
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">

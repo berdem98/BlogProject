@@ -1,8 +1,9 @@
 ﻿@model Blog
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-12">     
         <div class="bg-white p-4">
+            <a asp-action="Index" class="btn btn-primary">Geri Dön</a>
             <h1>Post Oluştur</h1>
             <form action="BlogAdd" method="post">
                 <div class="text-danger" asp-validation-summary="ModelOnly"></div>
@@ -23,7 +24,7 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="BlogContent" class="form-label"></label>
-                    <input asp-for="BlogContent" class="form-control" />
+                    <textarea asp-for="BlogContent" class="form-control" style="width: 100%; height: 300px;"></textarea>
                     <span asp-validation-for="BlogContent" class="text-danger"></span>
                 </div>
 
@@ -33,7 +34,7 @@
     </div>
 </div>
 
-@section Scripts2 {
+@* @section Scripts2 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js" integrity="sha512-VCEWnpOl7PIhbYMcb64pqGZYez41C2uws/M/mDdGPy+vtEJHd9BqbShE4/VNnnZdr7YCPOjd+CBmYca/7WWWCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
@@ -41,4 +42,4 @@
             selector: '#BlogContent'
         })
     </script>
-}
+} *@

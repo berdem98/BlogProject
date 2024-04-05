@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Blog>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 mt-3">
+
+
+            @if (Model.Any()) 
+            {
+                var item = Model.First(); 
+                <div class="d-flex align-items-center">
+                    <img class="rounded-circle mr-2" src="@item.Writer.WriterImage" width="45" height="45" alt="">
+                    <span>@item.Writer.WriterUserName</span>
+                </div>
+            }
+
+        </div>
+
+        <div class="col-lg-8 mt-3">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-12">
+                    <div class="position-relative mb-3">
+                        <img class="img-fluid w-100" src="@item.BlogImage" style="object-fit: cover;">
+                        <div class="bg-white border border-top-0 p-4">
+                            <div class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   href="">@item.Category.CategoryName</a>
+                                <a class="text-body" href=""><small>@item.BlogCreateDate.ToShortDateString()</small></a>
+                            </div>
+                            <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@item.BlogId">@item.BlogName</a>
+                            <p class="m-0">
+                                @item.BlogContent!.Substring(0, item.BlogContent.Substring(0, 130).LastIndexOf(" "))...
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle mr-2" src="@item.Writer.WriterImage" width="25" height="25" alt="">
+                                <small>@item.Writer.WriterName</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
+                                <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+</div>
+
+
+
+
