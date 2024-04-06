@@ -17,7 +17,7 @@
                 <div class="media mb-4 p-4">
                     <img src="@item.Blog.Writer.WriterImage" alt="Image" class="img-fluid mr-3 mt-1" style="width: 55px; height:55px;">
                     <div class="media-body pr-3">
-                        <h6><a class="text-secondary font-weight-bold" href="">@item.CommentUserName</a> <small><i>@item.CommentDate.ToShortDateString()</i></small></h6>
+                        <h6><a class="text-secondary font-weight-bold" href="">@item.CommentUserName</a> <small><i>@item.CommentDate.ToString("dd.MM.yyyy HH:mm")</i></small></h6>
                         <h6>@item.CommentTitle</h6>
                         <p>
                             @item.CommentContent

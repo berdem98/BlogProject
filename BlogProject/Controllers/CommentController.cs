@@ -30,7 +30,7 @@ namespace BlogProject.Controllers
 
             p.CommentUserName = userName;
 
-            p.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.CommentDate = DateTime.Now;
             p.CommentStatus = true;
 
             commentManager.CommentAdd(p);

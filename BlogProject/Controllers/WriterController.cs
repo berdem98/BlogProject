@@ -9,7 +9,7 @@ using System.Security.Claims;
 
 namespace BlogProject.Controllers
 {
-
+    [Authorize]
     public class WriterController : Controller
     {
         BlogManager blogManager = new BlogManager(new EfBlogRepository());

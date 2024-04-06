@@ -525,11 +525,16 @@ mark,
   content: "\2014\00A0";
 }
 
-.img-fluid {
+.img-fluid-details {
   max-width: 100%;
   width:110px;
-  height:110px;
+  height:310px;
   
+}
+.img-fluid {
+    max-width: 100%;
+    width: 110px;
+    height: 110px;
 }
 
 .img-thumbnail {
